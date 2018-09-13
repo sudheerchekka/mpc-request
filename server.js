@@ -69,17 +69,16 @@ var initDb = function(callback) {
 
 //---
 
+app.post("/addname", (req, res) => {
 
+/*  
 mongoose.connect(mongoURL);
 var nameSchema = new mongoose.Schema({
  account: String
 });
 var Account = mongoose.model("Account", nameSchema);
 
-
-app.post("/addname", (req, res) => {
-
-/*  var myData = new Account(req.body);
+var myData = new Account(req.body);
  myData.save()
  .then(item => {
       res.send("Thank you for your submission.");
@@ -87,6 +86,8 @@ app.post("/addname", (req, res) => {
  .catch(err => {
       res.status(400).send("unable to save to database");
  }); */
+    
+    
     
  
 });
