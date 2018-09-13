@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.user('/images', express.static(__dirname + '/images'));
+app.use('/images', express.static(__dirname + '/images'));
 
 //var mongoose = require("mongoose");
 //mongoose.Promise = global.Promise;
