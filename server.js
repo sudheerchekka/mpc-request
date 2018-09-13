@@ -94,6 +94,7 @@ var myData = new Account(req.body);
     var col = db.collection('accounts');
     // Create a document with request IP and current time of request
     col.insert({account: a11});
+    res.render('index.html', { pageCountMessage : 100 });
 
   } else {
     res.render('index.html', { pageCountMessage : null});
