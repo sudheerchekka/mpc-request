@@ -93,8 +93,9 @@ var myData = new Account(req.body);
    if (db) {
     var col = db.collection('accounts');
     // Create a document with request IP and current time of request
-    col.insert({account: "a11"});
-    res.render('index.html', { pageCountMessage : req.body.account });
+    col.insert({account: req.body.account});
+    //res.render('index.html', { pageCountMessage : req.body.account });
+    res.send("Thank you for your submission: " + req.body.account);
 
   } else {
     res.render('index.html', { pageCountMessage : null});
