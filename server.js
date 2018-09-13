@@ -2,7 +2,18 @@
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
-    
+
+//MPC truck stuff
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+
+//--MPC
+
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
@@ -55,6 +66,30 @@ var initDb = function(callback) {
     console.log('Connected to MongoDB at: %s', mongoURL);
   });
 };
+
+//---
+
+
+mongoose.connect(mongoURL);
+var nameSchema = new mongoose.Schema({
+ account: String
+});
+var Account = mongoose.model("Account", nameSchema);
+
+
+app.post("/addname", (req, res) => {
+
+  var myData = new Account(req.body);
+ myData.save()
+ .then(item => {
+      res.send("Thank you for your submission.");
+ })
+ .catch(err => {
+      res.status(400).send("unable to save to database");
+ }); 
+});
+
+//--
 
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
