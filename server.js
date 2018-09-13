@@ -9,8 +9,8 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
+//var mongoose = require("mongoose");
+//mongoose.Promise = global.Promise;
 
 //--MPC
 
@@ -79,14 +79,16 @@ var Account = mongoose.model("Account", nameSchema);
 
 app.post("/addname", (req, res) => {
 
-  var myData = new Account(req.body);
+/*  var myData = new Account(req.body);
  myData.save()
  .then(item => {
       res.send("Thank you for your submission.");
  })
  .catch(err => {
       res.status(400).send("unable to save to database");
- }); 
+ }); */
+    
+ 
 });
 
 //--
